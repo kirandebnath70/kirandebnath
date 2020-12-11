@@ -1,0 +1,68 @@
+var readlineSync=require('readline-sync');
+var userName=readlineSync.question('May i know your name please? ');
+
+
+console.log('\nWell '+userName+", let's see how well you know me")
+
+var score=0;
+
+function quiz(question,answer){
+
+  var userAns=readlineSync.question(question)
+
+  if(userAns.toUpperCase()===answer.toUpperCase()){
+    console.log('Correct\n');
+    score+=2
+  }else{
+    console.log('Wrong!!\n')
+    score-=1
+  }
+  
+}
+
+
+var questions=[
+
+  {question: '\n1. Can you say my name? ',answer: 'kiran debnath'},
+  
+  {question: '2. Where do i live? ',answer: 'assam'},
+  
+  {question: '3. What is my age? ',answer: '20'},
+
+  {question: '4. Which class do i study ? ',answer:'degree 3rd sem'},
+
+  {question: '5. Do i have any girlfriend ? ',answer:'no'},
+
+  {question: '6. What is my hobby? ',answer: 'cricket'}
+  
+  ]
+
+for(var i=0; i<questions.length; i++){
+  var current=questions[i]
+  quiz(current.question,current.answer)
+}
+
+var highScore= [
+  {name: 'Palak',score: 12},
+  {name: 'Shani',score: 9},
+  ];
+
+console.log('Your final score is '+score+'\n');
+
+console.log('Highest scorer are: \n')
+
+for(var i=0; i<highScore.length; i++){
+  var highScorer=highScore[i]
+  
+  console.log(highScorer.name+', score is ',highScorer.score)
+}
+
+
+
+if(score>=9){
+  console.log('\nCongratulations, you are a highest scorer now')
+  console.log('Send us screenshot to update your name\n')
+}else{
+  console.log('\nYou could not beat the highest scorer,better luck next time')
+  
+}
